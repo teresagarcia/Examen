@@ -11,13 +11,12 @@ import es.salesianos.connection.AbstractConnection;
 import es.salesianos.connection.H2Connection;
 import es.salesianos.model.Actor;
 import es.salesianos.model.Director;
-import es.salesianos.model.Pelicula;
+import es.salesianos.model.Film;
 
 public class Repository {
 
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test";
 	AbstractConnection manager = new H2Connection();
-
 
 	public void insert(Actor actor) {
 		Connection conn = manager.open(jdbcUrl);
@@ -36,19 +35,17 @@ public class Repository {
 			manager.close(preparedStatement);
 			manager.close(conn);
 		}
-
 	}
-	
-	
-	public void insert(Pelicula pelicula) {
+
+	public void insert(Film film) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn
-					.prepareStatement("INSERT INTO Pelicula (cod, title, codOwner)" + "VALUES (?, ?, ?)");
-			preparedStatement.setInt(1, pelicula.getCod());
-			preparedStatement.setString(2, pelicula.getTitle());
-			preparedStatement.setInt(3, pelicula.getCodDirector());
+					.prepareStatement("INSERT INTO FILM (cod, title, codOwner)" + "VALUES (?, ?, ?)");
+			preparedStatement.setInt(1, film.getCod());
+			preparedStatement.setString(2, film.getTitle());
+			preparedStatement.setInt(3, film.getCodDirector());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,15 +54,13 @@ public class Repository {
 			manager.close(preparedStatement);
 			manager.close(conn);
 		}
-
 	}
-	
+
 	public void insert(Director director) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("INSERT INTO DIRECTOR (cod, name)" + "VALUES (?, ?)");
+			preparedStatement = conn.prepareStatement("INSERT INTO DIRECTOR (cod, name)" + "VALUES (?, ?)");
 			preparedStatement.setInt(1, director.getCod());
 			preparedStatement.setString(2, director.getNombre());
 			preparedStatement.executeUpdate();
@@ -76,15 +71,13 @@ public class Repository {
 			manager.close(preparedStatement);
 			manager.close(conn);
 		}
-
 	}
-	
+
 	public void delete(Actor actor) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("DELETE FROM ACTOR WHERE cod=?");
+			preparedStatement = conn.prepareStatement("DELETE FROM ACTOR WHERE cod=?");
 			preparedStatement.setInt(1, actor.getCod());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -96,13 +89,12 @@ public class Repository {
 		}
 
 	}
-	
-	public void delete(Pelicula actor) {
+
+	public void delete(Film actor) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("DELETE FROM PELICULA WHERE cod=?");
+			preparedStatement = conn.prepareStatement("DELETE FROM PELICULA WHERE cod=?");
 			preparedStatement.setInt(1, actor.getCod());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -119,8 +111,7 @@ public class Repository {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("DELETE FROM DIRECTOR WHERE cod=?");
+			preparedStatement = conn.prepareStatement("DELETE FROM DIRECTOR WHERE cod=?");
 			preparedStatement.setInt(1, actor.getCod());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -130,17 +121,14 @@ public class Repository {
 			manager.close(preparedStatement);
 			manager.close(conn);
 		}
-
 	}
-	
-	
+
 	public List<Actor> selectAllActor() {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		List<Actor> list = new ArrayList<Actor>();
 		try {
-			preparedStatement = conn
-					.prepareStatement("SELECT * FROM ACTOR");
+			preparedStatement = conn.prepareStatement("SELECT * FROM ACTOR");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Actor actor = new Actor();
@@ -149,7 +137,7 @@ public class Repository {
 				actor.setYear(resultSet.getInt(2));
 				list.add(actor);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -159,14 +147,13 @@ public class Repository {
 		}
 		return list;
 	}
-	
+
 	public List<Director> selectAllDirector() {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		List<Director> list = new ArrayList<Director>();
 		try {
-			preparedStatement = conn
-					.prepareStatement("SELECT * FROM DIRECTOR");
+			preparedStatement = conn.prepareStatement("SELECT * FROM DIRECTOR");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Director director = new Director();
@@ -174,7 +161,7 @@ public class Repository {
 				director.setNombre(resultSet.getNString(0));
 				list.add(director);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -184,23 +171,22 @@ public class Repository {
 		}
 		return list;
 	}
-	
-	public List<Pelicula> selectAllPelicula() {
+
+	public List<Film> selectAllFilm() {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
-		List<Pelicula> list = new ArrayList<Pelicula>();
+		List<Film> list = new ArrayList<Film>();
 		try {
-			preparedStatement = conn
-					.prepareStatement("SELECT * FROM PELICULA");
+			preparedStatement = conn.prepareStatement("SELECT * FROM FILM");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				Pelicula director = new Pelicula();
+				Film director = new Film();
 				director.setCod(resultSet.getInt(0));
 				director.setTitle(resultSet.getString(1));
 				director.setCodDirector(resultSet.getInt(2));
 				list.add(director);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -210,5 +196,4 @@ public class Repository {
 		}
 		return list;
 	}
-	
 }
