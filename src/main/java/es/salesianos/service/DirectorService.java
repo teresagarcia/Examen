@@ -2,12 +2,19 @@ package es.salesianos.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import es.salesianos.model.Director;
+import es.salesianos.model.assembler.DirectorAssembler;
 import es.salesianos.repository.DirectorRepository;
 
 public class DirectorService {
 	
 	private DirectorRepository repository = new DirectorRepository();
+	
+	public Director assembleDirectorFromRequest(HttpServletRequest req) {
+		return DirectorAssembler.assembleDirectorFrom(req);
+	}
 	
 	public List<Director> selectAllDirector() {
 		return repository.selectAllDirector();
@@ -20,5 +27,6 @@ public class DirectorService {
 	public void delete(Director director) {
 		repository.delete(director);
 	}
+
 
 }

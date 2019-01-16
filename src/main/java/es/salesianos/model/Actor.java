@@ -1,17 +1,24 @@
 package es.salesianos.model;
 
-public class Actor extends Director{
+public class Actor extends BaseEntity {
 
-	
-	private Integer year;
+	private String name;
+	private int yearOfBirthDate;
 
-	public Integer getYear() {
-		return year;
+	public String getName() {
+		return name;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setName(String name) {
+		this.name = name;
 	}
 
+	public int getYearOfBirthDate() {
+		return yearOfBirthDate;
+	}
+
+	public void setYearOfBirthDate(int yearOfBirthDate) {
+		this.yearOfBirthDate = yearOfBirthDate;
+	}
 
 }

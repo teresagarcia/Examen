@@ -26,8 +26,8 @@ public class DirectorRepository {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Director director = new Director();
-				director.setCod(resultSet.getInt(0));
-				director.setNombre(resultSet.getNString(0));
+				director.setCod(resultSet.getInt(1));
+				director.setName(resultSet.getString(2));
 				list.add(director);
 			}
 
@@ -45,9 +45,8 @@ public class DirectorRepository {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO DIRECTOR (cod, name)" + "VALUES (?, ?)");
-			preparedStatement.setInt(1, director.getCod());
-			preparedStatement.setString(2, director.getNombre());
+			preparedStatement = conn.prepareStatement("INSERT INTO DIRECTOR (name)" + "VALUES (?)");
+			preparedStatement.setString(1, director.getName());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

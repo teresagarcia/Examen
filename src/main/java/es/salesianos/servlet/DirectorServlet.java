@@ -9,27 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.salesianos.model.Actor;
+import es.salesianos.model.Director;
+import es.salesianos.service.ActorService;
+import es.salesianos.service.DirectorService;
 import es.salesianos.service.Service;
 import es.salesianos.service.Service;
 
 public class DirectorServlet extends HttpServlet {
 
-
-	private static final long serialVersionUID = 1L;
-
-	private Service service = new Service();
+	private DirectorService service = new DirectorService();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doAction(req, resp);
-	}
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doAction(req, resp);
-	}
-
-	private void doAction(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		Director director = service.assembleDirectorFromRequest(req);
+		service.insert(director);
 		redirect(req, resp);
 	}
 
@@ -37,4 +30,5 @@ public class DirectorServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/director.jsp");
 		dispatcher.forward(req, resp);
 	}
+	
 }
