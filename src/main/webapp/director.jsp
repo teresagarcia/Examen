@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="/director" method="post">
-		<span>Name: </span> <input type="text" name="name"> <br />
+		<span>Name:</span> <input type="text" name="name"> <br />
 		<input type="submit">
 	</form>
 </body>

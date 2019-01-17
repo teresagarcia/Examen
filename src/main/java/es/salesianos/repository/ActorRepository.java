@@ -25,9 +25,9 @@ public class ActorRepository {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Actor actor = new Actor();
-				actor.setCod(resultSet.getInt(0));
-				actor.setName(resultSet.getNString(0));
-				actor.setYearOfBirthDate(resultSet.getInt(2));
+				actor.setCod(resultSet.getInt(1));
+				actor.setName(resultSet.getNString(2));
+				actor.setYearOfBirthDate(resultSet.getInt(3));
 				list.add(actor);
 			}
 
@@ -75,6 +75,28 @@ public class ActorRepository {
 			manager.close(conn);
 		}
 
+	}
+
+	public Actor findById(int code) {
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		Actor actor = new Actor();
+		try {
+			preparedStatement = conn.prepareStatement("SELECT cod, name, yearOfBirthDate FROM ACTOR WHERE cod=?");
+			preparedStatement.setInt(1, code);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			actor.setCod(resultSet.getInt(1));
+			actor.setName(resultSet.getNString(2));
+			actor.setYearOfBirthDate(resultSet.getInt(3));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			manager.close(preparedStatement);
+			manager.close(conn);
+		}
+		return actor;
 	}
 
 }

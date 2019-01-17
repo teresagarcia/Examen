@@ -25,9 +25,9 @@ public class FilmRepository {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Film film = new Film();
-				film.setCod(resultSet.getInt(0));
-				film.setTitle(resultSet.getString(1));
-				film.setCodDirector(resultSet.getInt(2));
+				film.setCod(resultSet.getInt(1));
+				film.setTitle(resultSet.getString(2));
+				film.setCodDirector(resultSet.getInt(3));
 				list.add(film);
 			}
 
@@ -45,10 +45,9 @@ public class FilmRepository {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO FILM	 (cod, tittle, codOwner)" + "VALUES (?, ?, ?)");
-			preparedStatement.setInt(1, film.getCod());
-			preparedStatement.setString(2, film.getTitle());
-			preparedStatement.setInt(3, film.getCodDirector());
+			preparedStatement = conn.prepareStatement("INSERT INTO FILM	 (tittle, codOwner)" + "VALUES (?, ?)");
+			preparedStatement.setString(1, film.getTitle());
+			preparedStatement.setInt(2, film.getCodDirector());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,7 +62,7 @@ public class FilmRepository {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("DELETE FROM PELICULA WHERE cod=?");
+			preparedStatement = conn.prepareStatement("DELETE FROM FILM WHERE cod = ?");
 			preparedStatement.setInt(1, film.getCod());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {

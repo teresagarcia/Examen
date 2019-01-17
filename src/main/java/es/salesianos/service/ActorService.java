@@ -28,5 +28,8 @@ public class ActorService {
 		repository.delete(actor);
 	}
 
+	public Actor findById(int code) {
+		return repository.findById(code);
+	}
 	
 }

@@ -1,7 +1,6 @@
 package es.salesianos.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.salesianos.model.Actor;
 import es.salesianos.service.ActorService;
-import es.salesianos.service.Service;
 
 public class ActorServlet extends HttpServlet {
 
@@ -22,6 +20,21 @@ public class ActorServlet extends HttpServlet {
 		Actor actor = service.assembleActorFromRequest(req);
 		service.insert(actor);
 		redirect(req, resp);
+	}
+
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String codString = req.getParameter("cod");
+		if (codString != null) {
+			Actor actorToDelete = service.findById(Integer.parseInt(codString));
+			service.delete(actorToDelete);
+		}
+		doAction(req, resp);
+	}
+
+	private void doAction(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {

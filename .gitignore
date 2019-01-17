@@ -108,4 +108,6 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
+#DB Trace
+src/main/resources/test.trace.db
 # End of https://www.gitignore.io/api/java,maven,eclipse

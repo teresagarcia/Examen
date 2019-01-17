@@ -8,12 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.salesianos.model.Actor;
 import es.salesianos.model.Director;
-import es.salesianos.service.ActorService;
 import es.salesianos.service.DirectorService;
-import es.salesianos.service.Service;
-import es.salesianos.service.Service;
 
 public class DirectorServlet extends HttpServlet {
 
