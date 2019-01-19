@@ -24,8 +24,8 @@ public class FilmService {
 		repository.insert(film);
 	}
 
-	public void delete(Film film) {
-		repository.delete(film);
+	public void delete(int code) {
+		repository.delete(code);
 	}
 
 }

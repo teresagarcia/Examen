@@ -10,14 +10,13 @@ import java.util.List;
 import es.salesianos.connection.AbstractConnection;
 import es.salesianos.connection.H2Connection;
 import es.salesianos.model.Director;
-import es.salesianos.model.Film;
 
 public class DirectorRepository {
 
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test";
 	AbstractConnection manager = new H2Connection();
 
-	public List<Director> selectAllDirector() {
+	public List<Director> listAllDirector() {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		List<Director> list = new ArrayList<Director>();
@@ -57,12 +56,12 @@ public class DirectorRepository {
 		}
 	}
 
-	public void delete(Director director) {
+	public void delete(int code) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("DELETE FROM DIRECTOR WHERE cod=?");
-			preparedStatement.setInt(1, director.getCod());
+			preparedStatement.setInt(1, code);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

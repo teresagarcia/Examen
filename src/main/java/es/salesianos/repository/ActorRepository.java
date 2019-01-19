@@ -27,7 +27,7 @@ public class ActorRepository {
 				Actor actor = new Actor();
 				actor.setCod(resultSet.getInt(1));
 				actor.setName(resultSet.getNString(2));
-				actor.setYearOfBirthDate(resultSet.getInt(3));
+				actor.setBirthYear(resultSet.getInt(3));
 				list.add(actor);
 			}
 
@@ -48,7 +48,7 @@ public class ActorRepository {
 			preparedStatement = conn
 					.prepareStatement("INSERT INTO ACTOR (name,yearOfBirthDate)" + "VALUES (?, ?)");
 			preparedStatement.setString(1, actor.getName());
-			preparedStatement.setInt(2, actor.getYearOfBirthDate());
+			preparedStatement.setInt(2, actor.getBirthYear());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,12 +60,12 @@ public class ActorRepository {
 
 	}
 
-	public void delete(Actor actor) {
+	public void delete(int code) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("DELETE FROM ACTOR WHERE cod=?");
-			preparedStatement.setInt(1, actor.getCod());
+			preparedStatement.setInt(1, code);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,7 +77,7 @@ public class ActorRepository {
 
 	}
 
-	public Actor findById(int code) {
+	public Actor findByCod(int code) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		Actor actor = new Actor();
@@ -87,7 +87,7 @@ public class ActorRepository {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			actor.setCod(resultSet.getInt(1));
 			actor.setName(resultSet.getNString(2));
-			actor.setYearOfBirthDate(resultSet.getInt(3));
+			actor.setBirthYear(resultSet.getInt(3));
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,6 +1,7 @@
 package es.salesianos.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,28 +14,29 @@ import es.salesianos.service.ActorService;
 
 public class ActorServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	private ActorService service = new ActorService();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Actor actor = service.assembleActorFromRequest(req);
 		service.insert(actor);
-		redirect(req, resp);
+		doAction(req, resp);
 	}
-
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String codString = req.getParameter("cod");
-		if (codString != null) {
-			Actor actorToDelete = service.findById(Integer.parseInt(codString));
-			service.delete(actorToDelete);
+		String code = req.getParameter("cod");
+		if (code != null) {
+			service.delete(Integer.parseInt(code));
 		}
 		doAction(req, resp);
 	}
 
-	private void doAction(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+	private void doAction(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		List<Actor> listAllActor = service.listAllActor();
+		req.setAttribute("listAllActor", listAllActor);
+		redirect(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {

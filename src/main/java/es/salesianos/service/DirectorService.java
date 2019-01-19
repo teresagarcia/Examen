@@ -16,16 +16,16 @@ public class DirectorService {
 		return DirectorAssembler.assembleDirectorFrom(req);
 	}
 	
-	public List<Director> selectAllDirector() {
-		return repository.selectAllDirector();
+	public List<Director> listAllDirector() {
+		return repository.listAllDirector();
 	}
 	
 	public void insert(Director director) {
 		repository.insert(director);
 	}
 	
-	public void delete(Director director) {
-		repository.delete(director);
+	public void delete(int code) {
+		repository.delete(code);
 	}
 
 

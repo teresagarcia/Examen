@@ -24,12 +24,12 @@ public class ActorService {
 		repository.insert(actor);
 	}
 	
-	public void delete(Actor actor) {
-		repository.delete(actor);
+	public void delete(int code) {
+		repository.delete(code);
 	}
 
-	public Actor findById(int code) {
-		return repository.findById(code);
+	public Actor findByCod(int code) {
+		return repository.findByCod(code);
 	}
 	
 }

@@ -27,12 +27,8 @@ public class FilmServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String codString = req.getParameter("cod");
-		
-		if(null != codString) {
-			Film film = new Film();
-			int cod = Integer.parseInt(codString);
-			film.setCod(cod);
-			service.delete(film);
+		if (null != codString) {
+			service.delete(Integer.parseInt(codString));
 		}
 		doAction(req, resp);
 	}
@@ -47,5 +43,5 @@ public class FilmServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/film.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
+
 }

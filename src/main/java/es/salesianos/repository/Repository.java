@@ -26,7 +26,7 @@ public class Repository {
 					.prepareStatement("INSERT INTO ACTOR (cod,name,yearOfBirthDate)" + "VALUES (?, ?, ?)");
 			preparedStatement.setInt(1, actor.getCod());
 			preparedStatement.setString(2, actor.getName());
-			preparedStatement.setInt(2, actor.getYearOfBirthDate());
+			preparedStatement.setInt(2, actor.getBirthYear());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,7 +133,7 @@ public class Repository {
 				Actor actor = new Actor();
 				actor.setCod(resultSet.getInt(0));
 				actor.setName(resultSet.getNString(0));
-				actor.setYearOfBirthDate(resultSet.getInt(2));
+				actor.setBirthYear(resultSet.getInt(2));
 				list.add(actor);
 			}
 

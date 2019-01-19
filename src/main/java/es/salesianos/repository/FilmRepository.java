@@ -58,12 +58,12 @@ public class FilmRepository {
 		}
 	}
 
-	public void delete(Film film) {
+	public void delete(int code) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("DELETE FROM FILM WHERE cod = ?");
-			preparedStatement.setInt(1, film.getCod());
+			preparedStatement.setInt(1, code);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
