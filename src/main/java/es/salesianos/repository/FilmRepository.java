@@ -17,7 +17,7 @@ public class FilmRepository extends Repository {
 
 	private static final String jdbcUrl = getJdbcUrl();
 	AbstractConnection manager = getManager();
-	private static final Logger log = LogManager.getLogger(ActorRepository.class);
+	private static final Logger log = LogManager.getLogger(FilmRepository.class);
 
 	public List<Film> selectAllFilm() {
 		Connection conn = manager.open(jdbcUrl);

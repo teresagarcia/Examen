@@ -24,6 +24,16 @@
 		<servlet-name>FilmActorServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.FilmActorServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>RecoveryFilmServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.RecoveryFilmServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>FillFilmActorServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.FillFilmActorServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ActorServlet</servlet-name>
@@ -43,6 +53,16 @@
 	<servlet-mapping>
 		<servlet-name>FilmActorServlet</servlet-name>
 		<url-pattern>/linkActors</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RecoveryFilmServlet</servlet-name>
+		<url-pattern>/chooseActor</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>FillFilmActorServlet</servlet-name>
+		<url-pattern>/fillFilmActor</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

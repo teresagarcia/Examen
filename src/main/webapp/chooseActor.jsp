@@ -6,28 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Link actors to films</title>
+<title>Choose an actor</title>
 </head>
 <body>
-	<% 
-	List<Film> listAllFilm = (List<Film>)request.getAttribute("listAllFilm"); 
+	<%
+		List<Actor> listAllActor = (List<Actor>) request.getAttribute("listAllActor");
+		String filmCod = (String)request.getParameter("filmCod");
+		request.setAttribute("filmCod", filmCod);
 	%>
 	<table border="1">
 		<thead>
 			<tr>
 				<td>Code</td>
 				<td>Name</td>
-				<td>Director</td>
+				<td>Birth year</td>
 				<td>Options</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="film" items="${listAllFilm}">
+			<c:forEach var="actor" items="${listAllActor}">
 				<tr>
-					<td><c:out value="${film.cod}" /></td>
-					<td><c:out value="${film.title}" /></td>
-					<td><c:out value="${film.codDirector}" /></td>
-					<td><a href="/film?cod=${film.cod}">Delete</a> <a href="/chooseActor?filmCod=${film.cod}">Link Actor</a></td>
+					<td><c:out value="${actor.cod}" /></td>
+					<td><c:out value="${actor.name}" /></td>
+					<td><c:out value="${actor.birthYear}" /></td>
+					<td><a href="/fillFilmActor?actorCod=${actor.cod}&filmCod=${filmCod}">Select</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

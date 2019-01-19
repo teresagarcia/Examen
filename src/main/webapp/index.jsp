@@ -10,8 +10,8 @@
 	<a href="/actor">Actors</a><br/>
 	<a href="/director">Directors</a><br/>
 	<a href="/film">Films</a><br/>
-<!-- 	<a href="/linkActors">Link actors to films</a><br/>
-	<a href="/searchRole">Search by role</a><br/>
-	<a href="/searchDirector">Search directors</a><br/> -->
+	<a href="/linkActors">Link actors to films</a><br/>
+	<a href="">Search by role</a><br/>
+	<a href="">Search directors</a><br/> 
 </body>
 </html>

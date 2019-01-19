@@ -17,7 +17,7 @@ public class DirectorRepository extends Repository {
 
 	private static final String jdbcUrl = getJdbcUrl();
 	AbstractConnection manager = getManager();
-	private static final Logger log = LogManager.getLogger(ActorRepository.class);
+	private static final Logger log = LogManager.getLogger(DirectorRepository.class);
 
 	public List<Director> listAllDirector() {
 		Connection conn = manager.open(jdbcUrl);
