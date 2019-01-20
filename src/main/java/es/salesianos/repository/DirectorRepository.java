@@ -81,10 +81,10 @@ public class DirectorRepository extends Repository {
 		PreparedStatement preparedStatement = null;
 		List<Director> list = new ArrayList<Director>();
 		try {
-			preparedStatement = conn.prepareStatement("SELECT DIRECTOR.NAME FROM (((ACTOR"
-					+ " INNER JOIN FILMACTOR ON FILMACTOR.CODACTOR = ACTOR.COD)"
-					+ " INNER JOIN FILM ON FILM.COD = FILMACTOR.CODFILM)"
-					+ " INNER JOIN DIRECTOR ON DIRECTOR.COD = FILM.CODOWNER) WHERE ACTOR.NAME = (?)");
+			preparedStatement = conn.prepareStatement(
+					"SELECT DIRECTOR.NAME FROM (((ACTOR" + " INNER JOIN FILMACTOR ON FILMACTOR.CODACTOR = ACTOR.COD)"
+							+ " INNER JOIN FILM ON FILM.COD = FILMACTOR.CODFILM)"
+							+ " INNER JOIN DIRECTOR ON DIRECTOR.COD = FILM.CODOWNER) WHERE ACTOR.NAME = (?)");
 			preparedStatement.setString(1, name);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {

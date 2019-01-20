@@ -16,8 +16,7 @@
 		<span>Search Actor: <input type="text" name="name"></span> <br />
 		<input type="submit">
 	</form>
-	<br />
-	<br />
+	<br/>
 	<table border="1">
 		<thead>
 			<tr>

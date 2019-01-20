@@ -48,7 +48,7 @@ public class FilmRepository extends Repository {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO FILM	 (tittle, codOwner)" + "VALUES (?, ?)");
+			preparedStatement = conn.prepareStatement("INSERT INTO FILM	 (tittle, codOwner) VALUES (?, ?)");
 			preparedStatement.setString(1, film.getTitle());
 			preparedStatement.setInt(2, film.getCodDirector());
 			preparedStatement.executeUpdate();

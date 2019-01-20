@@ -11,8 +11,7 @@
 <body>
 	<%
 		List<Actor> listAllActor = (List<Actor>) request.getAttribute("listAllActor");
-		String filmCod = (String)request.getParameter("filmCod");
-		request.setAttribute("filmCod", filmCod);
+		request.getAttribute("filmCod");
 	%>
 	<table border="1">
 		<thead>

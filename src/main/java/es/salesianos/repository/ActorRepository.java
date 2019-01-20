@@ -48,8 +48,7 @@ public class ActorRepository extends Repository {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("INSERT INTO ACTOR (name,yearOfBirthDate)" + "VALUES (?, ?)");
+			preparedStatement = conn.prepareStatement("INSERT INTO ACTOR (name,yearOfBirthDate) VALUES (?, ?)");
 			preparedStatement.setString(1, actor.getName());
 			preparedStatement.setInt(2, actor.getBirthYear());
 			preparedStatement.executeUpdate();
@@ -108,7 +107,8 @@ public class ActorRepository extends Repository {
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		try {
-			prepareStatement = conn.prepareStatement("SELECT cod, name, yearOfBirthDate FROM ACTOR WHERE yearOfBirthDate between ? AND ?");
+			prepareStatement = conn.prepareStatement(
+					"SELECT cod, name, yearOfBirthDate FROM ACTOR WHERE yearOfBirthDate between ? AND ?");
 			prepareStatement.setInt(1, startYear);
 			prepareStatement.setInt(2, endYear);
 			resultSet = prepareStatement.executeQuery();
@@ -131,6 +131,5 @@ public class ActorRepository extends Repository {
 
 		return actorsList;
 	}
-
 
 }

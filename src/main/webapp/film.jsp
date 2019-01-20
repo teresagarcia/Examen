@@ -17,6 +17,7 @@
 		<span>Director:</span> <input type="text" name="codDirector"> <br />
 		<input type="submit">
 	</form>
+	<br/>
 	<table border="1">
 		<thead>
 			<tr>

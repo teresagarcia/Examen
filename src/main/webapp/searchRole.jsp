@@ -19,7 +19,6 @@
 	<input type="submit">
 	</form>
 	<br/>
-	<br/>
 	<table border="1">
 		<thead>
 			<tr>
