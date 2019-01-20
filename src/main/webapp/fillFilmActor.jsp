@@ -15,6 +15,8 @@
 		<span>Cache:</span> <input type="text" name="cache"> <br /> 
 		<span>Role:</span><input type="text" name="role"> <br /> 
 		<input type="submit">
-</form>
+	</form>
+	<br/>
+	<a href="/index.jsp">Back to Index</a><br/>
 </body>
 </html>

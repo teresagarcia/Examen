@@ -34,6 +34,16 @@
 		<servlet-name>FillFilmActorServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.FillFilmActorServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>SearchRoleServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.SearchRoleServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SearchDirectorServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.SearchDirectorServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ActorServlet</servlet-name>
@@ -63,6 +73,16 @@
 	<servlet-mapping>
 		<servlet-name>FillFilmActorServlet</servlet-name>
 		<url-pattern>/fillFilmActor</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SearchRoleServlet</servlet-name>
+		<url-pattern>/searchRole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SearchDirectorServlet</servlet-name>
+		<url-pattern>/searchDirector</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
