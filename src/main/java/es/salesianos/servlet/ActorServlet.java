@@ -36,7 +36,7 @@ public class ActorServlet extends HttpServlet {
 	private void doAction(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String startDateString = req.getParameter("startYear");
 		if (startDateString != null) {
-			int startDate = Integer.parseInt(req.getParameter("startYear"));
+			int startDate = Integer.parseInt(startDateString);
 			int endDate = Integer.parseInt(req.getParameter("endYear"));
 			List<Actor> filteredActors = service.filterActor(startDate, endDate);
 			req.setAttribute("listAllActor", filteredActors);
