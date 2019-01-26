@@ -1,15 +1,13 @@
 package es.salesianos.controller;
 
-import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.model.Actor;
 import es.salesianos.service.ActorService;
@@ -20,38 +18,33 @@ public class ActorController {
 	@Autowired
 	private ActorService service;
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Actor actor = service.assembleActorFromRequest(req);
+	@PostMapping("/insertActor")
+	protected String insertActor(Actor actor) {
 		service.insert(actor);
-		doAction(req, resp);
+		return "/actor";
 	}
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String code = req.getParameter("cod");
-		if (code != null) {
-			service.delete(Integer.parseInt(code));
+	@GetMapping("/deleteActor")
+	protected String deleteActor(@RequestParam Integer cod) {
+		if (cod != null) {
+			service.delete(cod);
 		}
-		doAction(req, resp);
+		return "actor";
 	}
 
-	private void doAction(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		String startDateString = req.getParameter("startYear");
-		if (startDateString != null) {
-			int startDate = Integer.parseInt(startDateString);
-			int endDate = Integer.parseInt(req.getParameter("endYear"));
-			List<Actor> filteredActors = service.filterActor(startDate, endDate);
-			req.setAttribute("listAllActor", filteredActors);
-		} else {
-			List<Actor> listAllActor = service.listAllActor();
-			req.setAttribute("listAllActor", listAllActor);
-		}
-		redirect(req, resp);
+	@GetMapping("/actor")
+	private ModelAndView loadList() {
+		List<Actor> actorsList = service.listAllActor();
+		ModelAndView model = new ModelAndView("actor");
+		model.addObject("listAllActors", actorsList);
+		return model;
 	}
 
-	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/actor.jsp");
-		dispatcher.forward(req, resp);
+	@GetMapping("/filterActors")
+	private ModelAndView filterActors(@RequestParam Integer startYear, @RequestParam Integer endYear) {
+		List<Actor> filteredActors = service.filterActor(startYear, endYear);
+		ModelAndView model = new ModelAndView("actor");
+		model.addObject("listAllActors", filteredActors);
+		return null;
 	}
 }
