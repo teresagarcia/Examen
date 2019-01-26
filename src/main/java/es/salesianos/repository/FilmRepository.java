@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import es.salesianos.connection.AbstractConnection;
 import es.salesianos.model.Film;
 
+@org.springframework.stereotype.Repository
 public class FilmRepository extends Repository {
 
 	private static final String jdbcUrl = getJdbcUrl();

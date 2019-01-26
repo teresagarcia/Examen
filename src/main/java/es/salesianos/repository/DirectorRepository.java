@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import es.salesianos.connection.AbstractConnection;
 import es.salesianos.model.Director;
 
+@org.springframework.stereotype.Repository
 public class DirectorRepository extends Repository {
 
 	private static final String jdbcUrl = getJdbcUrl();

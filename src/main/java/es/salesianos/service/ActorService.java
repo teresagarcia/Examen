@@ -4,13 +4,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import es.salesianos.model.Actor;
 import es.salesianos.model.assembler.ActorAssembler;
 import es.salesianos.repository.ActorRepository;
 
+@Service
 public class ActorService {
 
-	private ActorRepository repository = new ActorRepository();
+	@Autowired
+	private ActorRepository repository;
 	
 	public Actor assembleActorFromRequest(HttpServletRequest req) {
 		return ActorAssembler.assembleActorFrom(req);
