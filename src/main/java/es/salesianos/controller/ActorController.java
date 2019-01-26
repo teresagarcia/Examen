@@ -19,17 +19,17 @@ public class ActorController {
 	private ActorService service;
 
 	@PostMapping("/insertActor")
-	protected String insertActor(Actor actor) {
+	protected ModelAndView insertActor(Actor actor) {
 		service.insert(actor);
-		return "/actor";
+		return loadList();
 	}
 
 	@GetMapping("/deleteActor")
-	protected String deleteActor(@RequestParam Integer cod) {
+	protected ModelAndView deleteActor(@RequestParam Integer cod) {
 		if (cod != null) {
 			service.delete(cod);
 		}
-		return "actor";
+		return loadList();
 	}
 
 	@GetMapping("/actor")
@@ -45,6 +45,6 @@ public class ActorController {
 		List<Actor> filteredActors = service.filterActor(startYear, endYear);
 		ModelAndView model = new ModelAndView("actor");
 		model.addObject("listAllActors", filteredActors);
-		return null;
+		return model;
 	}
 }
