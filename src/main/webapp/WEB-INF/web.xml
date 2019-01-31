@@ -5,27 +5,6 @@
 	version="3.1">
 	<display-name>Archetype Created Web Application</display-name>
 
-	<!-- <servlet> <servlet-name>ActorServlet</servlet-name> <servlet-class>es.salesianos.servlet.ActorServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>FilmServlet</servlet-name> <servlet-class>es.salesianos.servlet.FilmServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>DirectorServlet</servlet-name> <servlet-class>es.salesianos.servlet.DirectorServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>FilmActorServlet</servlet-name> <servlet-class>es.salesianos.servlet.FilmActorServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>RecoveryFilmServlet</servlet-name> <servlet-class>es.salesianos.servlet.RecoveryFilmServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>FillFilmActorServlet</servlet-name> <servlet-class>es.salesianos.servlet.FillFilmActorServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>SearchRoleServlet</servlet-name> <servlet-class>es.salesianos.servlet.SearchRoleServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>SearchDirectorServlet</servlet-name> <servlet-class>es.salesianos.servlet.SearchDirectorServlet</servlet-class> 
-		</servlet> <servlet-mapping> <servlet-name>ActorServlet</servlet-name> <url-pattern>/actor</url-pattern> 
-		</servlet-mapping> <servlet-mapping> <servlet-name>FilmServlet</servlet-name> 
-		<url-pattern>/film</url-pattern> </servlet-mapping> <servlet-mapping> <servlet-name>DirectorServlet</servlet-name> 
-		<url-pattern>/director</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>FilmActorServlet</servlet-name> <url-pattern>/linkActors</url-pattern> 
-		</servlet-mapping> <servlet-mapping> <servlet-name>RecoveryFilmServlet</servlet-name> 
-		<url-pattern>/chooseActor</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>FillFilmActorServlet</servlet-name> <url-pattern>/fillFilmActor</url-pattern> 
-		</servlet-mapping> <servlet-mapping> <servlet-name>SearchRoleServlet</servlet-name> 
-		<url-pattern>/searchRole</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>SearchDirectorServlet</servlet-name> <url-pattern>/searchDirector</url-pattern> 
-		</servlet-mapping> -->
-
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring-context.xml</param-value>
@@ -37,9 +16,6 @@
 		</listener-class>
 	</listener>
 
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

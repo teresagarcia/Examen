@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import="java.io.*,java.util.*,es.salesianos.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,14 +10,11 @@
 <title>Films</title>
 </head>
 <body>
-	<% 
-	List<Film> listAllFilm = (List<Film>)request.getAttribute("listAllFilm"); 
-	%>
-	<form action="/film" method="post">
-		<span>Title:</span> <input type="text" name="title"> <br />
-		<span>Director:</span> <input type="text" name="codDirector"> <br />
+ 	<form:form action="/insertFilm" method="post" modelAttribute="film">
+		<form:label path="title">Title:</form:label> <form:input path="title"/> <br />
+		<form:label path="codDirector">Director:</form:label> <form:input path="codDirector"/> <br />
 		<input type="submit">
-	</form>
+	</form:form> 
 	<br/>
 	<table border="1">
 		<thead>
@@ -33,7 +31,7 @@
 					<td><c:out value="${film.cod}" /></td>
 					<td><c:out value="${film.title}" /></td>
 					<td><c:out value="${film.codDirector}" /></td>
-					<td><a href="/film?cod=${film.cod}">Delete</a></td>
+					<td><a href="/deleteFilm?cod=${film.cod}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

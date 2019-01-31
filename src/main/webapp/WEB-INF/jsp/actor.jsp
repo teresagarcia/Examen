@@ -46,6 +46,6 @@
 		</tbody>
 	</table>
 	<br/>
-	<a href="/index.jsp">Back to Index</a><br/>
+	<a href="/index">Back to Index</a><br/>
 </body>
 </html>
