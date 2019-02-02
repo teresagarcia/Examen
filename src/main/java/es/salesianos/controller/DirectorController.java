@@ -40,4 +40,17 @@ public class DirectorController {
 		return model;
 	}
 	
+	@GetMapping("/searchDirector")
+	protected String searchDirector() {
+		return "/searchDirector";
+	}
+
+	@PostMapping("/searchDirector")
+	protected ModelAndView filterByDirector(String name) {
+		List<Director> listFilterDirector = service.filterDirector(name);
+		ModelAndView model = new ModelAndView("searchDirector");
+		model.addObject("listFilterDirector", listFilterDirector);
+		return model;
+	}
+
 }

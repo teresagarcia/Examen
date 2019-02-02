@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.model.Actor;
+import es.salesianos.model.ActorFilmDTO;
 import es.salesianos.model.Film;
 import es.salesianos.model.FilmActor;
 import es.salesianos.service.ActorService;
@@ -55,5 +56,18 @@ public class FilmActorController  {
 	protected ModelAndView fillFilmActor(FilmActor filmActor) {
 		filmActorService.insert(filmActor);
 		return getFilmsToLink();
+	}
+
+	@GetMapping("/searchRole")
+	protected String searchRole() {
+		return "/searchRole";
+	}
+
+	@PostMapping("/searchRole")
+	protected ModelAndView filterByDirector(String role) {
+		ActorFilmDTO selectedActorFilm = filmActorService.filterActorFilm(role);
+		ModelAndView model = new ModelAndView("searchRole");
+		model.addObject("selectedActorFilm", selectedActorFilm);
+		return model;
 	}
 }

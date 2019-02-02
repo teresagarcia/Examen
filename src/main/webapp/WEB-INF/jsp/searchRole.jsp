@@ -9,10 +9,6 @@
 <title>Search by role</title>
 </head>
 <body>
-	<%
-	ActorFilmDTO selectedActorFilm = (ActorFilmDTO)request.getAttribute("selectedActorFilm");
-	%>
-	
 	<form action="/searchRole" method="post">
 	<span>Search by role: <input type="text" name="role"></span>
 	<br/>
@@ -36,6 +32,6 @@
 		</tbody>
 	</table>
 	<br/>
-	<a href="/index.jsp">Back to Index</a><br/>
+	<a href="/index">Back to Index</a><br/>
 </body>
 </html>

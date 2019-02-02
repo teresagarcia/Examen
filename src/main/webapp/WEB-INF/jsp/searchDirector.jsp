@@ -9,9 +9,6 @@
 <title>Search directors</title>
 </head>
 <body>
-	<%
-		List<Director> listFilterDirector = (List<Director>) request.getAttribute("listFilterDirector");
-	%>
 	<form action="/searchDirector" method="post">
 		<span>Search Actor: <input type="text" name="name"></span> <br />
 		<input type="submit">
@@ -34,6 +31,6 @@
 		</tbody>
 	</table>
 	<br/>
-	<a href="/index.jsp">Back to Index</a><br/>
+	<a href="/index">Back to Index</a><br/>
 </body>
 </html>
