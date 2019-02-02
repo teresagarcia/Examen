@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.model.Actor;
 import es.salesianos.model.Film;
+import es.salesianos.model.FilmActor;
 import es.salesianos.service.ActorService;
+import es.salesianos.service.FilmActorService;
 import es.salesianos.service.FilmService;
 
 @Controller
@@ -20,6 +23,8 @@ public class FilmActorController  {
 	FilmService filmService;
 	@Autowired
 	ActorService actorService;
+	@Autowired
+	FilmActorService filmActorService;
 
 	@GetMapping("/linkActors")
 	protected ModelAndView getFilmsToLink() {
@@ -38,8 +43,17 @@ public class FilmActorController  {
 		return model;
 	}
 
-	@GetMapping("/fillFilmActor")
-	protected ModelAndView fillFilmActor(@RequestParam Integer filmCod, @RequestParam Integer actorCod) {
-		return null;
+	@GetMapping("/recoveryFilmActor")
+	protected ModelAndView recoveryData(@RequestParam Integer filmCod, @RequestParam Integer actorCod) {
+		ModelAndView model = new ModelAndView("fillFilmActor");
+		model.addObject("filmCod", filmCod);
+		model.addObject("actorCod", actorCod);
+		return model;
+	}
+
+	@PostMapping("/fillFilmActor")
+	protected ModelAndView fillFilmActor(FilmActor filmActor) {
+		filmActorService.insert(filmActor);
+		return getFilmsToLink();
 	}
 }

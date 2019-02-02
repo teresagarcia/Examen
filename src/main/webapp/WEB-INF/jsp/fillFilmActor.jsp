@@ -7,7 +7,9 @@
 <title>Film Actor Details</title>
 </head>
 <body>
-	<form action="/fillFilmActor?codFilm=${codFilm}&codActor=${codActor}" method="post">
+	<form action="/fillFilmActor" method="post">
+		<input type="hidden" name="codFilm" value="${filmCod}"> 
+		<input type="hidden" name="codActor" value="${actorCod}"> 
 		<span>Cache:</span> <input type="text" name="cache"> <br /> 
 		<span>Role:</span><input type="text" name="role"> <br /> 
 		<input type="submit">
