@@ -16,12 +16,4 @@
 		base-package="es.salesianos.*" />
 	<context:annotation-config />
 	
-	
-	
-	
-	
-	
-	
-	
-	
 </beans>

@@ -10,11 +10,11 @@
 <title>Films</title>
 </head>
 <body>
- 	<form:form action="/insertFilm" method="post" modelAttribute="film">
-		<form:label path="title">Title:</form:label> <form:input path="title"/> <br />
-		<form:label path="codDirector">Director:</form:label> <form:input path="codDirector"/> <br />
+	<form action="/insertFilm" method="post">
+		<span>Name:</span> <input type="text" name="title"> <br />
+		<span>Director:</span> <input type="text" name="codDirector"> <br />
 		<input type="submit">
-	</form:form> 
+	</form>
 	<br/>
 	<table border="1">
 		<thead>
@@ -37,6 +37,6 @@
 		</tbody>
 	</table>
 	<br/>
-	<a href="/index.jsp">Back to Index</a><br/>
+	<a href="/index">Back to Index</a><br/>
 </body>
 </html>

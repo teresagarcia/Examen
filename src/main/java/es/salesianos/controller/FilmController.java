@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,15 +19,15 @@ public class FilmController {
 	private FilmService service;
 
 	@PostMapping("/insertFilm")
-	protected void insertFilm(@ModelAttribute Film film) {
+	protected ModelAndView insertFilm(Film film) {
 		service.insert(film);
-		loadList();
+		return loadList();
 	}
 
 	@GetMapping("/deleteFilm")
-	protected void deleteFilm(@RequestParam Integer cod) {
+	protected ModelAndView deleteFilm(@RequestParam Integer cod) {
 		service.delete(cod);
-		loadList();
+		return loadList();
 	}
 
 	@GetMapping("/film")

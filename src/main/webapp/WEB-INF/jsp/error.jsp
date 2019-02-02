@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Error fatal</title>
+<title>Error</title>
 </head>
 <body>
-<img alt="fatal error" src="<c:url value="resources/images/errorfatal.jpg"/>"/>
+<img alt="fatal error" src="<c:url value="resources/images/fatalerror.jpg"/>"/>
 <br/>
 	<a href="/index">Back to Index</a><br/>
 </body>

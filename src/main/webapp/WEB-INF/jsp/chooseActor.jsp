@@ -9,10 +9,6 @@
 <title>Choose an actor</title>
 </head>
 <body>
-	<%
-		List<Actor> listAllActor = (List<Actor>) request.getAttribute("listAllActor");
-		request.getAttribute("filmCod");
-	%>
 	<table border="1">
 		<thead>
 			<tr>
