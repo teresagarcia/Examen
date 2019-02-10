@@ -8,7 +8,7 @@ import es.salesianos.model.FilmActor;
 import es.salesianos.repository.FilmActorRepository;
 
 @Service
-public class FilmActorService {
+public class FilmActorService implements IFIlmActorService {
 
 	@Autowired
 	FilmActorRepository repository;

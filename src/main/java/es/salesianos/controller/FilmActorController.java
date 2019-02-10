@@ -13,19 +13,19 @@ import es.salesianos.model.Actor;
 import es.salesianos.model.ActorFilmDTO;
 import es.salesianos.model.Film;
 import es.salesianos.model.FilmActor;
-import es.salesianos.service.ActorService;
-import es.salesianos.service.FilmActorService;
-import es.salesianos.service.FilmService;
+import es.salesianos.service.IActorService;
+import es.salesianos.service.IFIlmActorService;
+import es.salesianos.service.IFilmService;
 
 @Controller
 public class FilmActorController  {
 
 	@Autowired
-	FilmService filmService;
+	IFilmService filmService;
 	@Autowired
-	ActorService actorService;
+	IActorService actorService;
 	@Autowired
-	FilmActorService filmActorService;
+	IFIlmActorService filmActorService;
 
 	@GetMapping("/linkActors")
 	protected ModelAndView getFilmsToLink() {

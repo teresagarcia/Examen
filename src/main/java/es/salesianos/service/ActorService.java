@@ -9,7 +9,7 @@ import es.salesianos.model.Actor;
 import es.salesianos.repository.ActorRepository;
 
 @Service
-public class ActorService {
+public class ActorService implements IActorService {
 
 	@Autowired
 	private ActorRepository repository;

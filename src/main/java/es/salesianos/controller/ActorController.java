@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.model.Actor;
-import es.salesianos.service.ActorService;
+import es.salesianos.service.IActorService;
 
 @Controller
 public class ActorController {
 
 	@Autowired
-	private ActorService service;
+	private IActorService service;
 
 	@PostMapping("/insertActor")
 	protected ModelAndView insertActor(Actor actor) {
@@ -26,9 +26,7 @@ public class ActorController {
 
 	@GetMapping("/deleteActor")
 	protected ModelAndView deleteActor(@RequestParam Integer cod) {
-		if (cod != null) {
-			service.delete(cod);
-		}
+		service.delete(cod);
 		return loadList();
 	}
 

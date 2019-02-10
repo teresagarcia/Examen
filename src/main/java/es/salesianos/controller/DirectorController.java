@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.model.Director;
-import es.salesianos.service.DirectorService;
+import es.salesianos.service.IDirectorService;
 
 @Controller
 public class DirectorController {
 
 	@Autowired
-	private DirectorService service;
+	private IDirectorService service;
 
 	@PostMapping("/insertDirector")
 	protected ModelAndView insertDirector(Director director) {

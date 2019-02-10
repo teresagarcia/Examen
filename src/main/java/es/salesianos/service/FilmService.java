@@ -9,7 +9,7 @@ import es.salesianos.model.Film;
 import es.salesianos.repository.FilmRepository;
 
 @Service
-public class FilmService {
+public class FilmService implements IFilmService {
 
 	@Autowired
 	private FilmRepository repository;

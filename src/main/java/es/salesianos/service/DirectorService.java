@@ -9,7 +9,7 @@ import es.salesianos.model.Director;
 import es.salesianos.repository.DirectorRepository;
 
 @Service
-public class DirectorService {
+public class DirectorService implements IDirectorService {
 	
 	@Autowired
 	private DirectorRepository repository;
